@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: name-collection-config
 data:
-  MYSQL_HOST: your-mysql-host
-  MYSQL_USER: your-mysql-username
-  MYSQL_PASSWORD: your-mysql-password
-  MYSQL_DB: your-mysql-database-name
+  MYSQL_HOST: 192.168.1.32
+  MYSQL_USER: root
+  MYSQL_PASSWORD: #qwerty123
+  MYSQL_DB:info
