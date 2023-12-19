@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
       <body>
         <h2>Enter a Name</h2>
         <form action="/addName" method="post">
-          <input type="text" name="name" placeholder="Enter a name" required>
+          <input type="text" name="name" placeholder="Enter your name" required>
           <button type="submit">Submit</button>
         </form>
       </body>
