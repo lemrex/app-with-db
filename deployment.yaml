@@ -22,8 +22,8 @@ spec:
                 name: name-collection-config
           resources:
             limits:
-              cpu: 100m 
-              memory: 64Mi 
-            requests:
               cpu: 200m 
               memory: 128Mi 
+            requests:
+              cpu: 100m 
+              memory: 64Mi 
