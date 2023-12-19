@@ -48,7 +48,7 @@ app.post('/addName', (req, res) => {
     return;
   }
 
-  const insertQuery = 'INSERT INTO names (name) VALUES (?)';
+  const insertQuery = 'INSERT INTO person (name) VALUES (?)';
   connection.query(insertQuery, [name], (error, results) => {
     if (error) {
       res.status(500).send('Error adding name to the database');
@@ -60,7 +60,7 @@ app.post('/addName', (req, res) => {
 
 // Express route to get all names
 app.get('/names', (req, res) => {
-  connection.query('SELECT * FROM names', (error, results) => {
+  connection.query('SELECT * FROM person', (error, results) => {
     if (error) {
       res.status(500).send('Error fetching names from the database');
       throw error;
