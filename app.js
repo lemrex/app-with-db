@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
   `);
 });
 
-// Express route to handle form submission and add name to the database
+// Express route to handle form submission and add name to the 'person' table
 app.post('/addName', (req, res) => {
   const { name } = req.body;
   if (!name) {
@@ -48,7 +48,7 @@ app.post('/addName', (req, res) => {
     return;
   }
 
-  const insertQuery = 'INSERT INTO person (name) VALUES (?)';
+  const insertQuery = 'INSERT INTO person (name) VALUES (?)'; // Modified query for 'person' table
   connection.query(insertQuery, [name], (error, results) => {
     if (error) {
       res.status(500).send('Error adding name to the database');
@@ -58,9 +58,9 @@ app.post('/addName', (req, res) => {
   });
 });
 
-// Express route to get all names
+// Express route to get all names from the 'person' table
 app.get('/names', (req, res) => {
-  connection.query('SELECT * FROM person', (error, results) => {
+  connection.query('SELECT * FROM person', (error, results) => { // Modified query for 'person' table
     if (error) {
       res.status(500).send('Error fetching names from the database');
       throw error;
