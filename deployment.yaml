@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: name-collection-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: name-collection
+  template:
+    metadata:
+      labels:
+        app: name-collection
+    spec:
+      containers:
+        - name: name-collection-app
+          image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:6044844bc79c2fc3223e24615034ea10aa70304c
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: name-collection-config
+          resources:
+            limits:
+              cpu: "0.5" 
+              memory: "512Mi" 
+              cpu: "0.1" 
+              memory: "256Mi" 
