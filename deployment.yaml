@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: name-collection-app
-          image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:6044844bc79c2fc3223e24615034ea10aa70304c
+          image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
           ports:
             - containerPort: 3000
           envFrom:
