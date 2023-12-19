@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: name-collection-service
 spec:
+  type: NodePort  # Change service type to NodePort
   selector:
     app: name-collection
   ports:
     - protocol: TCP
       port: 80
       targetPort: 3000
+      nodePort: 30512  # Define a specific nodePort value (replace with desired port number)
