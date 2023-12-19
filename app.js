@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const app = express();
 const port = 3000;
 
-// Middleware to parse JSON and URL-encoded bodies
+// Middleware to parse JSON and URL-encoded bodiesg
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
