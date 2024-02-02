@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: name-collection-service
+  name: dbs
 spec:
   type: NodePort  # Change service type to NodePort
   selector:
-    app: name-collection
+    app: db-app
   ports:
     - protocol: TCP
-      port: 80
+      port: 3000
       targetPort: 3000
       nodePort: 30512  # Define a specific nodePort value (replace with desired port number)
