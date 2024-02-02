@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: form
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-app
+  template:
+    metadata:
+      labels:
+        app: db-app
+    spec:
+      serviceAccountName: nginx-spc-sa   # Reference the created ServiceAccount.
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "spc-test"  # Reference the created SPC.
+      containers:
+        - name: db-app
+          image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: db-secret
+          resources:
+            limits:
+              cpu: 100m 
+              memory: 100Mi 
+            requests:
+              cpu: 100m 
+              memory: 64Mi 
+          volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"  # Define the mount path of secrets in the container.
+              readOnly: true
+      imagePullSecrets:
+        - name: default-secret
+
