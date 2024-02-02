@@ -12,23 +12,20 @@ spec:
       labels:
         app: db-app
     spec:
-      serviceAccountName: nginx-spc-sa   # Reference the created ServiceAccount.
+      serviceAccountName: spc-db   # Reference the created ServiceAccount.
       volumes:
         - name: secrets-store-inline
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: "spc-test"  # Reference the created SPC.
+              secretProviderClass: "spc-db"  # Reference the created SPC.
       containers:
         - name: db-app
           image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
-          envFrom:
-            - configMapRef:
-                name: db-secret
           resources:
             limits:
               cpu: 100m 
