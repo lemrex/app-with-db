@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 30512  # Define a specific nodePort value (replace with desired port number)
+      nodePort: 30513  # Define a specific nodePort value (replace with desired port number)
