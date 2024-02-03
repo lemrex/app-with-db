@@ -54,6 +54,6 @@ jobs:
         run: |
           kubectl apply -f deployment-csi.yaml
           kubectl apply -f service.yaml
-          kubectl apply -f serviceaccount.yaml
+          kubectl apply -f serviceaccount.yaml -n default
           kubectl apply -f secretproviderclass.yaml
           
