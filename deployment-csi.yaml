@@ -25,9 +25,7 @@ spec:
           image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
-          env:
-          - name: ralf            
+            - containerPort: 3000          
           resources:
             limits:
               cpu: 100m 
@@ -37,7 +35,7 @@ spec:
               memory: 64Mi 
           volumeMounts:
             - name: secrets-store-inline
-              mountPath: "/mnt/secrets-store"  
+              mountPath: "/usr/src/app/secrets-store"  
               readOnly: true
       imagePullSecrets:
         - name: default-secret
