@@ -38,6 +38,6 @@ spec:
               mountPath: "/mnt/secrets-store"  
               readOnly: true
           command: ["/bin/sh"]
-          args: ["-c", "source /mnt/secrets-store/ralf && exec /usr/src/app/"]
+          args: ["-c", "(source /mnt/secrets-store/ralf && exec /usr/src/app/)"]
       imagePullSecrets:
         - name: default-secret
