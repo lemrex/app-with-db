@@ -12,14 +12,14 @@ spec:
       labels:
         app: db-app
     spec:
-      serviceAccountName: spc-db   # Reference the created ServiceAccount.
+      serviceAccountName: nginx-spc-sa
       volumes:
         - name: secrets-store-inline
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: "spc-db"  # Reference the created SPC.
+              secretProviderClass: "spc-test"  
       containers:
         - name: db-app
           image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
@@ -35,7 +35,7 @@ spec:
               memory: 64Mi 
           volumeMounts:
             - name: secrets-store-inline
-              mountPath: "/mnt/secrets-store"  # Define the mount path of secrets in the container.
+              mountPath: "/mnt/secrets-store"  
               readOnly: true
       imagePullSecrets:
         - name: default-secret
