@@ -35,7 +35,7 @@ spec:
               memory: 64Mi 
           volumeMounts:
             - name: secrets-store-inline
-              mountPath: "/usr/src/app/secrets-store"  
+              mountPath: "/usr/src/app"  
               readOnly: true
       imagePullSecrets:
         - name: default-secret
