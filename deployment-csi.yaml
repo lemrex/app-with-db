@@ -17,7 +17,7 @@ spec:
         - name: secrets-store-inline
           csi:
             driver: secrets-store.csi.k8s.io
-            readOnly: false
+            readOnly: true
             volumeAttributes:
               secretProviderClass: "spc-test"  
       containers:
@@ -36,7 +36,7 @@ spec:
           volumeMounts:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"  
-              readOnly: true 
+              readOnly: false 
           args:
             - "/bin/sh"
             - "-c"
