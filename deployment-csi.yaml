@@ -37,8 +37,23 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"  
               readOnly: true 
-          envFrom:
-                secretRef:
-                  name: ralf
+          env:
+          - name: MYSQL_HOST
+            valueFrom:
+              secretKeyRef:
+                name: "spc-test"
+                key:  MYSQL_HOST
+
+          - name: MYSQL_USER
+            valueFrom:  
+              secretKeyRef:
+                name: "spc-test"
+                key: MYSQL_USER
+
+          - name: MYSQL_PASSWORD
+            valueFrom:  
+              secretKeyRef:
+                name: "spc-test"
+                key: MYSQL_PASSWORD
       imagePullSecrets:
         - name: default-secret
