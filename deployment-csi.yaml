@@ -33,6 +33,10 @@ spec:
             requests:
               cpu: 100m 
               memory: 64Mi 
+          volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"  
+              readOnly: true
           env:
             - name: MYSQL_HOST
               valueFrom:
@@ -53,10 +57,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: secrets-store-inline
-                  key: MYSQL_DB
-          volumeMounts:
-            - name: secrets-store-inline
-              mountPath: "/mnt/secrets-store"  
-              readOnly: true
+                  key: MYSQL_DB              
       imagePullSecrets:
         - name: default-secret
