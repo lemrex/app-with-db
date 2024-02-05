@@ -38,25 +38,9 @@ spec:
               mountPath: "/mnt/secrets-store"  
               readOnly: true
           env:
-            - name: MYSQL_HOST
+            - name: ralf
               valueFrom:
-                secretKeyRef:
-                  name: secrets-store-inline
-                  key: MYSQL_HOST
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: secrets-store-inline
-                  key: MYSQL_USER
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: secrets-store-inline
-                  key: MYSQL_PASSWORD
-            - name: MYSQL_DB
-              valueFrom:
-                secretKeyRef:
-                  name: secrets-store-inline
-                  key: MYSQL_DB              
+                secretRef:
+                  name: secrets-store-inline       
       imagePullSecrets:
         - name: default-secret
