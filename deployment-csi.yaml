@@ -17,7 +17,7 @@ spec:
         - name: secrets-store-inline
           csi:
             driver: secrets-store.csi.k8s.io
-            readOnly: true
+            readOnly: false
             volumeAttributes:
               secretProviderClass: "spc-test"  
       containers:
@@ -37,28 +37,10 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"  
               readOnly: true 
-          env:
-          - name: MYSQL_HOST
-            valueFrom:
-              secretKeyRef:
-                name: ralf
-                key:  MYSQL_HOST
-
-          - name: MYSQL_USER
-            valueFrom:  
-              secretKeyRef:
-                name: ralf
-                key: MYSQL_USER
-
-          - name: MYSQL_PASSWORD
-            valueFrom:  
-              secretKeyRef:
-                name: ralf
-                key: MYSQL_PASSWORD
-          - name: MYSQL_DB
-            valueFrom:  
-              secretKeyRef:
-                name: ralf
-                key: MYSQL_DB             
+          args:
+            - "/bin/sh"
+            - "-c"
+            - "cp /mnt/secrets-store/ralf /usr/src/app/.env" 
+           
       imagePullSecrets:
         - name: default-secret
