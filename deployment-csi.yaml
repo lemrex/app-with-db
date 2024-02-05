@@ -39,6 +39,6 @@ spec:
               readOnly: true 
           envFrom:
                 secretRef:
-                  name: /mnt/secrets-store/ralf
+                  name: ralf
       imagePullSecrets:
         - name: default-secret
