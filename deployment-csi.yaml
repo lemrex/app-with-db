@@ -41,19 +41,24 @@ spec:
           - name: MYSQL_HOST
             valueFrom:
               secretKeyRef:
-                name: "spc-test"
+                name: spc-test
                 key:  MYSQL_HOST
 
           - name: MYSQL_USER
             valueFrom:  
               secretKeyRef:
-                name: "spc-test"
+                name: spc-test
                 key: MYSQL_USER
 
           - name: MYSQL_PASSWORD
             valueFrom:  
               secretKeyRef:
-                name: "spc-test"
+                name: spc-test
                 key: MYSQL_PASSWORD
+          - name: MYSQL_DB
+            valueFrom:  
+              secretKeyRef:
+                name: spc-test
+                key: MYSQL_DB             
       imagePullSecrets:
         - name: default-secret
