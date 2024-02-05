@@ -36,11 +36,6 @@ spec:
           volumeMounts:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"  
-              readOnly: true
-          env:
-            - name: ralf
-              valueFrom:
-                secretRef:
-                  name: secrets-store-inline       
+              readOnly: true 
       imagePullSecrets:
         - name: default-secret
