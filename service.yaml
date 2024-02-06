@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort  # Change service type to NodePort
   selector:
-    app: db-app
+    app: dbs
   ports:
     - protocol: TCP
       port: 3000
