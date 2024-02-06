@@ -41,7 +41,7 @@ jobs:
           echo "${{ secrets.KUBE_CONFIG_DATA }}" > $KUBECONFIG
       - name: Update deployment
         run: |
-          sed -i "s@swr.af-south-1.myhuaweicloud.com/ralf/db-app:[a-z0-9]*@swr.af-south-1.myhuaweicloud.com/ralf/db-app:${{ github.sha }}@g" deployment-csi.yaml    
+          sed -i "s@swr.af-south-1.myhuaweicloud.com/ralf/db-app:[a-z0-9]*@swr.af-south-1.myhuaweicloud.com/ralf/db-app:${{ github.sha }}@g" deployment-env.yaml    
 
 
       - name: Debugging
@@ -52,7 +52,7 @@ jobs:
 
       - name: Deploy to Huawei CCE
         run: |
-          kubectl apply -f deployment-csi.yaml
+          kubectl apply -f deployment-env.yaml
           kubectl apply -f service.yaml
           kubectl apply -f serviceaccount.yaml -n default
           kubectl apply -f secretproviderclass.yaml
