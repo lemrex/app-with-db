@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: api
-        image: swr.af-south-1.myhuaweicloud.com/ralf/api:cb1c9e48aea5d71679f21ed4b84432caef37a894
+        image: swr.af-south-1.myhuaweicloud.com/ralf/api:d33b72f57fc7c183deaaae619d93f69318f6360a
         ports:
         - containerPort: 3000
