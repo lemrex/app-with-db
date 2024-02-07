@@ -2,14 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: api
-  labels:
-    app: api
 spec:
+  type: NodePort  # Change service type to NodePort
   selector:
     app: api
   ports:
     - protocol: TCP
-      port: 80
+      port: 3000
       targetPort: 3000
-  type: NodePort
-  nodePort: 30517
+      nodePort: 30517  # Define a specific nodePort value (replace with desired port number)
