@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: swr.af-south-1.myhuaweicloud.com/ralf/api:8dc031913cc0c7712f244e98604a33acf22ebd43
+        ports:
+        - containerPort: 3000
