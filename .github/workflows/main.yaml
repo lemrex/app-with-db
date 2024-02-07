@@ -22,7 +22,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t swr.af-south-1.myhuaweicloud.com/ralf/api:${{ github.sha }} api/Dockerfile
+          docker build -t swr.af-south-1.myhuaweicloud.com/ralf/api:${{ github.sha }} api/
           docker push swr.af-south-1.myhuaweicloud.com/ralf/api:${{ github.sha }}
 
   deploy:
