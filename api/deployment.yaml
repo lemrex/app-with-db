@@ -19,3 +19,10 @@ spec:
         image: swr.af-south-1.myhuaweicloud.com/ralf/api:9bc1efe8083f7f07708f2a6d199aa174d8d5e7d7
         ports:
         - containerPort: 3000
+        resources:
+          requests:
+            cpu: "10m"  # Request 200 millicpu (0.2 CPU)
+            memory: "10Mi"  # Request 128 megabytes
+          limits:
+            cpu: "10m"  # Limit to 500 millicpu (0.5 CPU)
+            memory: "10Mi"  # Limit to 256 megabytes
