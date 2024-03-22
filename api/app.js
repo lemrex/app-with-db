@@ -4,6 +4,17 @@ const express = require('express');
 // Create Express app
 const app = express();
 
+// Middleware to log requests
+app.use((req, res, next) => {
+  const { method, url, ip } = req;
+  const timestamp = new Date().toLocaleString();
+  
+  // Log request details
+  console.log(`[${timestamp}] ${method} ${url} from ${ip}`);
+  
+  next(); // Continue to next middleware or route
+});
+
 // Define routes
 
 // Route 1: Hello World
@@ -34,6 +45,11 @@ app.get('/users/:id', (req, res) => {
   const userId = req.params.id;
   const user = { id: userId, name: `User${userId}` };
   res.json(user);
+});
+
+// Handle invalid requests
+app.use((req, res) => {
+  res.status(404).send('Invalid request. Route not found.');
 });
 
 // Start the server
