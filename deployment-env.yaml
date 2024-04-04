@@ -18,8 +18,8 @@ spec:
           ports:
             - containerPort: 3000
           envFrom:
-            - secretRef:
-                name: db-secret
+            - configMapRef:
+                name: name-collection-config
           resources:
             limits:
               cpu: 100m 
