@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const app = express();
 const port = 3000;
 
-// Middleware to parse JSON and URL-encoded bodiesg
+// Middleware to parse JSON and URL-encoded bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,9 +30,11 @@ app.get('/', (req, res) => {
   res.send(`
     <html>
       <body>
-        <h2>Enter a Name</h2>
-        <form action="/addName" method="post">
-          <input type="text" name="name" placeholder="Enter your name" required>
+        <h2>Enter Name, Age, and State</h2>
+        <form action="/addInfo" method="post">
+          <input type="text" name="name" placeholder="Enter your name" required><br>
+          <input type="number" name="age" placeholder="Enter your age" required><br>
+          <input type="text" name="state" placeholder="Enter your state" required><br>
           <button type="submit">Submit</button>
         </form>
       </body>
@@ -40,29 +42,29 @@ app.get('/', (req, res) => {
   `);
 });
 
-// Express route to handle form submission and add name to the 'person' table
-app.post('/addName', (req, res) => {
-  const { name } = req.body;
-  if (!name) {
-    res.status(400).send('Name is required');
+// Express route to handle form submission and add info to the 'person' table
+app.post('/addInfo', (req, res) => {
+  const { name, age, state } = req.body;
+  if (!name || !age || !state) {
+    res.status(400).send('Name, Age, and State are required');
     return;
   }
 
-  const insertQuery = 'INSERT INTO person (name) VALUES (?)'; // Modified query for 'person' table
-  connection.query(insertQuery, [name], (error, results) => {
+  const insertQuery = 'INSERT INTO person (name, age, state) VALUES (?, ?, ?)';
+  connection.query(insertQuery, [name, age, state], (error, results) => {
     if (error) {
-      res.status(500).send('Error adding name to the database');
+      res.status(500).send('Error adding info to the database');
       throw error;
     }
-    res.send('Name added successfully');
+    res.send('Info added successfully');
   });
 });
 
-// Express route to get all names from the 'person' table
-app.get('/names', (req, res) => {
-  connection.query('SELECT * FROM person', (error, results) => { // Modified query for 'person' table
+// Express route to get all info from the 'person' table
+app.get('/info', (req, res) => {
+  connection.query('SELECT * FROM person', (error, results) => {
     if (error) {
-      res.status(500).send('Error fetching names from the database');
+      res.status(500).send('Error fetching info from the database');
       throw error;
     }
     res.json(results);
@@ -70,5 +72,5 @@ app.get('/names', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is runnings on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
