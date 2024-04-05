@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
   res.send(`
     <html>
       <body>
-        <h2>Enter Name, Age, and State</h2>
+        <h2>Enter Information</h2>
         <form action="/addInfo" method="post">
           <input type="text" name="name" placeholder="Enter your name" required><br>
           <input type="number" name="age" placeholder="Enter your age" required><br>
