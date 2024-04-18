@@ -37,7 +37,9 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
-
+          envFrom:
+            - ConfigMap:
+                name: name-collection-config
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
