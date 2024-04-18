@@ -37,23 +37,9 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
-          env:
-            - name: MYSQL_HOST
-              valueFrom:
-                fileref:
-                  path: /mnt/secrets-store/
-            - name: MYSQL_USER
-              valueFrom:
-                fileref:
-                  path: /mnt/secrets-store/
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                fileref:
-                  path: /mnt/secrets-store/
-            - name: MYSQL_DB
-              valueFrom:
-                fileref:
-                  path: /mnt/secrets-store/
+          envFrom:
+            - secretRef:
+                name: ralf  
 
 # apiVersion: apps/v1
 # kind: Deployment
