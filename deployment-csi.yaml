@@ -40,24 +40,20 @@ spec:
           env:
             - name: MYSQL_HOST
               valueFrom:
-                secretKeyRef:
-                  name: ralf
-                  key: MYSQL_HOST
+                fileref:
+                  path: /mnt/secrets-store/
             - name: MYSQL_USER
               valueFrom:
-                secretKeyRef:
-                  name: ralf
-                  key: MYSQL_USER
+                fileref:
+                  path: /mnt/secrets-store/
             - name: MYSQL_PASSWORD
               valueFrom:
-                secretKeyRef:
-                  name: ralf
-                  key: MYSQL_PASSWORD
+                fileref:
+                  path: /mnt/secrets-store/
             - name: MYSQL_DB
               valueFrom:
-                secretKeyRef:
-                  name: ralf
-                  key: MYSQL_DB
+                fileref:
+                  path: /mnt/secrets-store/
 
 # apiVersion: apps/v1
 # kind: Deployment
