@@ -37,9 +37,6 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
-          envFrom:
-            - secretRef:
-                name: ralf  
 
 # apiVersion: apps/v1
 # kind: Deployment
