@@ -28,18 +28,19 @@ spec:
             - containerPort: 3000
           resources:
             limits:
-              cpu: 100m
-              memory: 100Mi
+              cpu: "100m"
+              memory: "100Mi"
             requests:
-              cpu: 100m
-              memory: 64Mi
+              cpu: "100m"
+              memory: "64Mi"
           volumeMounts:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
           envFrom:
-            - ConfigMap:
+            - configMapRef:
                 name: name-collection-config
+
 # apiVersion: apps/v1
 # kind: Deployment
 # metadata:
