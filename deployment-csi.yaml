@@ -35,11 +35,10 @@ spec:
               memory: "64Mi"
           volumeMounts:
             - name: secrets-store-inline
-              mountPath: "/mnt/secrets-store"
+              mountPath: "/usr/src/app/.env"
               readOnly: true
-          envFrom:
-            - configMapRef:
-                name: name-collection-config
+              subPath: ".env"
+              
 
 # apiVersion: apps/v1
 # kind: Deployment
