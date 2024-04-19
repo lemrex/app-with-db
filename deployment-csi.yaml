@@ -37,12 +37,6 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
-          env:
-          - name: MYSECRET1_ENV_VAR
-            valueFrom:
-              secretKeyRef:
-                name: foosecret
-                key: MYSQL_HOST
           # envFrom:
           #   - configMapRef:
           #       name: name-collection-config
