@@ -41,7 +41,7 @@ spec:
           - name: MYSECRET1_ENV_VAR
             valueFrom:
               secretKeyRef:
-                name: secret-object
+                name: foosecret
                 key: MYSQL_HOST
           # envFrom:
           #   - configMapRef:
