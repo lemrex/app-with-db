@@ -38,6 +38,9 @@ spec:
               mountPath: "/usr/src/app/.env"
               readOnly: true
               subPath: ".env"
+          envFrom:
+            - configMapRef:
+                name: name-collection-config
               
 
 # apiVersion: apps/v1
