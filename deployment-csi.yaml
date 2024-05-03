@@ -37,9 +37,7 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
-          env:
-            - name: DEV_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: dev-secrets
-                  key: MYSQL_HOST
+          envFrom:
+            - secretRef:
+                name: dev-secrets
+
