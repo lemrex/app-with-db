@@ -37,51 +37,9 @@ spec:
             - name: secrets-store-inline
               mountPath: "/mnt/secrets-store"
               readOnly: true
-          # envFrom:
-          #   - configMapRef:
-          #       name: name-collection-config
-              
-
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: form
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: db-app
-#   template:
-#     metadata:
-#       labels:
-#         app: db-app
-#     spec:
-#       serviceAccountName: spc-db
-#       volumes:
-#         - name: secrets-store-inline
-#           csi:
-#             driver: secrets-store.csi.k8s.io
-#             readOnly: true
-#             volumeAttributes:
-#               secretProviderClass: "spc-db"  
-#       containers:
-#         - name: db-app
-#           image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
-#           imagePullPolicy: Always
-#           ports:
-#             - containerPort: 3000  
-#           envFrom:
-#             - secretRef:
-#                 name: ralf
-#           resources:
-#             limits:
-#               cpu: 100m 
-#               memory: 100Mi 
-#             requests:
-#               cpu: 100m 
-#               memory: 64Mi 
-#           volumeMounts:
-#             - name: secrets-store-inline
-#               mountPath: "/mnt/secrets-store"  
-#               readOnly: true
-           
+          env:
+            - name: DEV_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: dev-secrets
+                  key: MYSQL_HOST
