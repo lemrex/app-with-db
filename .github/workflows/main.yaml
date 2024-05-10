@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install kubectl v1.21
+        run: |
+          curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubectl
+          chmod +x ./kubectl
+          sudo mv ./kubectl /usr/local/bin/kubectl
+        
       - name: Checkout code
         uses: actions/checkout@v3
         
@@ -26,4 +32,3 @@ jobs:
         run: |
           kubectl cluster-info
           kubectl get nodes
-          
