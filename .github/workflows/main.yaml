@@ -25,8 +25,9 @@ jobs:
           ak: ${{ secrets.ACCESSKEY }}
           sk: ${{ secrets.SECRETACCESSKEY }}
           region: "af-south-1"
-          project_id: "3e7cb44b-4b49-43b5-93df-d78f8a24e2dc"
+          project_id: "eecc7ec81ad346adbcde0a07fa343cb0"
           cluster_id: "8817579e-f98a-11ee-990c-0255ac1000eb"
+          #project_id: "3e7cb44b-4b49-43b5-93df-d78f8a24e2dc"
           
       - name: Debugging
         run: |
