@@ -19,7 +19,7 @@ spec:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: "spc-db"
+              secretProviderClass: "spc-test"
       containers:
         - name: db-app
           image: swr.af-south-1.myhuaweicloud.com/ralf/db-app:8dc031913cc0c7712f244e98604a33acf22ebd43
@@ -39,5 +39,5 @@ spec:
               readOnly: true
           envFrom:
             - secretRef:
-                name: dev-secrets
+                name: test-secret
 
