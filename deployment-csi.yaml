@@ -39,6 +39,5 @@ spec:
               readOnly: true
           envFrom:
             - secretRef:
-                name: test-secret
-
+                name: test-today
 # ignore
