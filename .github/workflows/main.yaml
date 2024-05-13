@@ -53,6 +53,7 @@ jobs:
       - name: Deploy to Huawei CCE
         run: |
           kubectl apply -f serviceaccount.yaml
+          kubectl apply -f secretproviderclass.yaml
           kubectl apply -f configmap.yaml
           kubectl apply -f deployment-csi.yaml
           kubectl apply -f service.yaml
