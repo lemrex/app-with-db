@@ -1,5 +1,4 @@
-name: CI/CD to Huawei SWR and CCE
-
+name: Debugging action
 on:
   push:
     branches:
