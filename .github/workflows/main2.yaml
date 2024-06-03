@@ -1,30 +1,17 @@
-name: Debugging action
+name: Example Workflow
+
 on:
   push:
     branches:
-      - master  
+      - master
 
 jobs:
-  deploy:
+  example_job:
     runs-on: ubuntu-latest
-
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-        
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: get CCE Cluster Credentials
-        uses: JimohHWC/cce-credential-action@v1.0.0
-        with:
-          ak: ${{ secrets.ACCESSKEY }}
-          sk: ${{ secrets.SECRETACCESSKEY }}
-          region: "af-south-1"
-          project_id: "eecc7ec81ad346adbcde0a07fa343cb0"
-          cluster_id: "b91f7810-1d0b-11ef"
-          #project_id: "3e7cb44b-4b49-43b5-93df-d78f8a24e2dc"
-          
-      - name: Debugging
-        run: |
-          kubectl cluster-info
-          kubectl get nodes
+      - name: Run a script
+        run: echo "This is running on a push to the main branch"
