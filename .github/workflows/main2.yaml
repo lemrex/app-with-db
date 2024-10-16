@@ -1,4 +1,4 @@
-name: CI/CD to Huawei SWR and CCE
+name: CI/CD to Huawei SWR 
 
 on:
   push:
@@ -19,6 +19,10 @@ jobs:
           access-key-id: ${{ secrets.ACCESSKEY }}
           access-key-secret: ${{ secrets.SECRETACCESSKEY }}
           region: af-south-1
+
+      - name: Echo Access Key
+        run: |
+          echo "Access Key: ${{ secrets.ACCESSKEY }}" 
 
       - name: Build and push Docker image
         run: |
