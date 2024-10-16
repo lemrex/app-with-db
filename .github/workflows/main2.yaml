@@ -1,4 +1,4 @@
-name: CI/CD to Huawei SWR 
+name: Push to Huawei SWR 
 
 on:
   push:
