@@ -28,3 +28,7 @@ jobs:
         run: |
           docker build -t swr.af-south-1.myhuaweicloud.com/ralf/fg:${{ github.sha }} .
           docker push swr.af-south-1.myhuaweicloud.com/ralf/fg:${{ github.sha }}
+
+
+
+#ignire
