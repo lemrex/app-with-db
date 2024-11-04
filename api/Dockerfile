@@ -1,20 +1,25 @@
-# Use official Node.js image
-FROM node:14-alpine
+FROM node:12.10.0
 
-# Set working directory to root
-WORKDIR /
+ENV HOME=/home/custom_container
+ENV GROUP_ID=1003
+ENV GROUP_NAME=custom_container
+ENV USER_ID=1003
+ENV USER_NAME=custom_container
 
-# Copy package.json and package-lock.json to root
-COPY package*.json ./
+RUN mkdir -m 550 ${HOME} && groupadd -g ${GROUP_ID} ${GROUP_NAME} && useradd -u ${USER_ID} -g ${GROUP_ID} ${USER_NAME}
 
-# Install dependencies
-RUN npm install
+COPY --chown=${USER_ID}:${GROUP_ID} main.js ${HOME}
+COPY --chown=${USER_ID}:${GROUP_ID} package.json ${HOME}
 
-# Copy application files to root
-COPY . .
+RUN cd ${HOME} && npm install
 
-# Expose port
+RUN chown -R ${USER_ID}:${GROUP_ID} ${HOME}
+
+RUN find ${HOME} -type d | xargs chmod 500
+RUN find ${HOME} -type f | xargs chmod 500
+
+USER ${USER_NAME}
+WORKDIR /${HOME}
+
 EXPOSE 8000
-
-# Run the application
-CMD ["node", "main.js"]
+ENTRYPOINT ["node", "main.js"]
