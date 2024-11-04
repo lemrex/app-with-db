@@ -22,4 +22,4 @@ USER ${USER_NAME}
 WORKDIR /${HOME}
 
 EXPOSE 8000
-ENTRYPOINT ["node", "main.js"]
+ENTRYPOINT ["node", "/home/custom_container/main.js"]
