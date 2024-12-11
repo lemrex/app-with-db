@@ -21,7 +21,7 @@ RUN find ${HOME} -type f | xargs chmod 500
 USER ${USER_NAME}
 WORKDIR /${HOME}
 
-EXPOSE 8000
+EXPOSE 8080
 ENTRYPOINT ["node", "/home/custom_container/main.js"]
 
 
