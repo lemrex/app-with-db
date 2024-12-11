@@ -1,3 +1,26 @@
+# name: Push to Huawei SWR 
+
+# on:
+#   push:
+#     branches:
+#       - master  # Trigger CI/CD when code is pushed to the 'master' branch
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       - name: Build and push Docker image
+#         run: |
+
+#           docker login -u af-south-1@${{ secrets.ACCESSKEY }} -p ${{ secrets.SECRETACCESSKEY }} swr.af-south-1.myhuaweicloud.com
+#           docker build -t swr.af-south-1.myhuaweicloud.com/ralf/fg:${{ github.sha }} ./api
+#           docker push swr.af-south-1.myhuaweicloud.com/ralf/fg:${{ github.sha }}
+
+
 name: Push to Huawei SWR 
 
 on:
@@ -19,7 +42,3 @@ jobs:
           docker login -u af-south-1@${{ secrets.ACCESSKEY }} -p ${{ secrets.SECRETACCESSKEY }} swr.af-south-1.myhuaweicloud.com
           docker build -t swr.af-south-1.myhuaweicloud.com/ralf/fg:${{ github.sha }} ./api
           docker push swr.af-south-1.myhuaweicloud.com/ralf/fg:${{ github.sha }}
-
-
-
-#ignire
