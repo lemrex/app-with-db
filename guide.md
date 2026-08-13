@@ -5,7 +5,7 @@ This guide demonstrates how to retrieve a secret from **Huawei Cloud Secret Mana
 The example secret is:
 
 ```
-CSMS Secret ID: 737
+CSMS Secret Name: 737
 
 ```
 
