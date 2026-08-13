@@ -22,8 +22,6 @@ The secret contains:
 
 ```
 
-> **Security note:** Never commit real passwords to Git. The example above should use a placeholder password in documentation.
-
 ---
 
 ## 1. Architecture
